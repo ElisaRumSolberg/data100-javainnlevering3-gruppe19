@@ -47,6 +47,8 @@ public class Bilde extends Tekst {
     // Metoden nedenfor er kun for valgfri oppgave 6
     @Override
     public String toHTML() {
-        throw new UnsupportedOperationException(TODO.method());
+        return super.toHTML()
+                + "<iframe src=\"" + getUrl() + "\" height=600 width=800></iframe>";
+
     }
 }

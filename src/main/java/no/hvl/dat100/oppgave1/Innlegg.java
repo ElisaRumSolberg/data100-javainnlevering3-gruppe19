@@ -1,31 +1,24 @@
 package no.hvl.dat100.oppgave1;
 
-import no.hvl.dat100.common.TODO;
-
 public abstract class Innlegg {
 
-    //  Private object variable
+    // Private object variables
     private int id;
     private String bruker;
     private String dato;
     private int likes;
 
-    public Innlegg() {
-
-    }
+    public Innlegg() { }
 
     public Innlegg(int id, String bruker, String dato) {
         this(id, bruker, dato, 0);
-
     }
 
     public Innlegg(int id, String bruker, String dato, int likes) {
-
         this.id = id;
         this.bruker = bruker;
         this.dato = dato;
         this.likes = likes;
-
     }
 
     public String getBruker() {
@@ -38,7 +31,6 @@ public abstract class Innlegg {
 
     public String getDato() {
         return dato;
-
     }
 
     public void setDato(String dato) {
@@ -46,7 +38,7 @@ public abstract class Innlegg {
     }
 
     public int getId() {
-         return id;
+        return id;
     }
 
     public int getLikes() {
@@ -59,19 +51,17 @@ public abstract class Innlegg {
 
     public boolean erLik(Innlegg innlegg) {
         return innlegg != null && this.id == innlegg.id;
-
     }
 
     @Override
     public String toString() {
-        return id + "\n" + bruker + "\n" + dato + "\n" + likes + "\n";
 
+        return id + "\n" + bruker + "\n" + dato + "\n" + likes + "\n";
     }
 
-    // Metoden nedenfor er kun for valgfri oppgave 6
+    // Valgfri Oppgave 6: HTML-representasjon
+
     public String toHTML() {
-
         return "<h2>" + getBruker() + "@" + getDato() + " [" + getLikes() + "]<h2>\n";
-
     }
 }

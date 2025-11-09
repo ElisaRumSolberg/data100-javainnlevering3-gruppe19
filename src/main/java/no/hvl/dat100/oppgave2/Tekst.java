@@ -52,9 +52,9 @@ public class Tekst extends Innlegg {
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
+    @Override
 	public String toHTML() {
-			
-		throw new UnsupportedOperationException(TODO.method());
-				
+        return super.toHTML() + "<p>" + getTekst() + "<p>\n";
 	}
+
 }
