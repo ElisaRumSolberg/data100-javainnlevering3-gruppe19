@@ -22,7 +22,42 @@ public class LesBlogg {
 
 	public static Blogg les(String mappe, String filnavn) {
 
-		throw new UnsupportedOperationException(TODO.method());
+        File file = (mappe == null || mappe.isBlank())
+                ? new File(filnavn)
+                : new File(mappe, filnavn);
 
-	}
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+
+            String line = br.readLine();
+            if (line == null) return null;
+
+            int antall = Integer.parseInt(line.trim());
+            Blogg blogg = new Blogg(antall);
+
+            for (int i = 0; i < antall; i++) {
+                String type = br.readLine();                 // TEKST eller  BILDE
+                int id      = Integer.parseInt(br.readLine().trim());
+                String bruker = br.readLine();
+                String dato   = br.readLine();
+                int likes   = Integer.parseInt(br.readLine().trim());
+                String tekst = br.readLine();
+
+                if (TEKST.equals(type)) {
+                    blogg.leggTil(new Tekst(id, bruker, dato, likes, tekst));
+                } else if (BILDE.equals(type)) {
+                    String url = br.readLine();
+                    blogg.leggTil(new Bilde(id, bruker, dato, likes, tekst, url));
+                } else {
+
+                    return null;
+                }
+            }
+
+            return blogg;
+
+        } catch (IOException | NumberFormatException e) {
+            return null;
+        }
+    }
 }
